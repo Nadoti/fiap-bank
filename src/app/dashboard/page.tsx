@@ -1,4 +1,5 @@
 import Header from '@/components/Header';
+import Card from '@/components/Card';
 
 export default function Dashboard() {
   return (
@@ -8,6 +9,11 @@ export default function Dashboard() {
             <div className="flex">
               oi
             </div>
+            <Card>
+              <div className="">
+                e ai
+              </div>
+            </Card>
           </main>
       </>
   )
