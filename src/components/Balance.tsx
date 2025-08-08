@@ -19,7 +19,7 @@ export default function Balance() {
   };
 
   return (
-      <div className="bg-cyan-900 text-white mx-auto w-full p-4">
+      <div className="text-white mx-auto w-full p-4">
         <div className="flex items-center justify-between mb-4">
           <h1 className="text-xl font-semibold">Saldo</h1>
           <button
@@ -27,7 +27,7 @@ export default function Balance() {
               className="text-orange-500 hover:text-orange-400 transition-colors duration-200 cursor-pointer"
               aria-label={ isVisible ? 'Ocultar saldo' : 'Mostrar saldo' }
           >
-            { isVisible ? <IoEye/> : <IoEyeOff/> }
+            { isVisible ? <IoEye className="text-orange-500"/> : <IoEyeOff className="text-orange-500"/> }
           </button>
         </div>
 
