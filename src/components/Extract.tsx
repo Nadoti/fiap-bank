@@ -6,37 +6,37 @@ export function Extract() {
   const transactions = [
     {
       id: 1,
-      mes: 'Novembro',
-      tipo: 'Depósito',
-      valor: 150,
+      month: 'Novembro',
+      type: 'Depósito',
+      value: 150,
       data: '18/11/2022'
     },
     {
       id: 2,
-      mes: 'Novembro',
-      tipo: 'Depósito',
-      valor: 100,
+      month: 'Novembro',
+      type: 'Depósito',
+      value: 100,
       data: '21/11/2022'
     },
     {
       id: 3,
-      mes: 'Novembro',
-      tipo: 'Depósito',
-      valor: 50,
+      month: 'Novembro',
+      type: 'Depósito',
+      value: 50,
       data: '21/11/2022'
     },
     {
       id: 4,
-      mes: 'Novembro',
-      tipo: 'Transferência',
-      valor: -500,
+      month: 'Novembro',
+      type: 'Transferência',
+      value: -500,
       data: '21/11/2022'
     }
   ];
 
-  const formatValue = (valor: number) => {
-    const prefixo = valor < 0 ? '-R$ ' : 'R$ ';
-    return prefixo + Math.abs(valor);
+  const formatValue = (value: number) => {
+    const prefix = value < 0 ? '-R$ ' : 'R$ ';
+    return prefix + Math.abs(value);
   };
 
 
@@ -45,7 +45,7 @@ export function Extract() {
       className="bg-white rounded-lg py-8 ps-6 pe-[18px]"
       isPixelsImages={false}
       isImageBackground={ false }
-      heightAuto={ true }
+      heightAuto={ false }
     >
       <div className="flex items-center justify-between mb-6">
         <h3 className="text-[25px] font-bold text-black">Extrato</h3>
@@ -69,13 +69,13 @@ export function Extract() {
               <div className="flex items-center justify-between">
                 <div className="flex flex-col w-full gap-2">
                   <div className="text-green-500 text-[13px] font-semibold">
-                    {transaction.mes}
+                    {transaction.month}
                   </div>
                   <div className="text-black text-base font-medium">
-                    {transaction.tipo}
+                    {transaction.type}
                   </div>
                   <div className="text-black text-base font-semibold">
-                    {formatValue(transaction.valor)}
+                    {formatValue(transaction.value)}
                   </div>
                   <div className="h-px bg-green-500 mt-2"></div>
                 </div>

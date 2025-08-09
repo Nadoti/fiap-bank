@@ -19,7 +19,7 @@ export default function Balance() {
   };
 
   return (
-      <div className="text-white mx-auto w-full p-4">
+      <div className="text-white mx-auto w-full p-4 md:mb-18">
         <div className="flex items-center justify-between mb-4">
           <h1 className="text-xl font-semibold">Saldo</h1>
           <button

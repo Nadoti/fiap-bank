@@ -27,7 +27,7 @@ export default function Header() {
           </div>
 
           <div className="flex items-center gap-2">
-          <span className="text-white font-semibold text-[13px] hidden sm:inline sm:mr-4 2xl:mr-10">
+          <span className="text-white font-semibold text-[13px] hidden md:inline md:mr-4 2xl:mr-10">
             Joana da Silva Oliveira
           </span>
             <HiOutlineUserCircle className="w-10 h-10 text-orange-500" />
