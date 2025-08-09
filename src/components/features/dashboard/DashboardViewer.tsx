@@ -15,7 +15,7 @@ export function DashboardViewer() {
     <>
       <Header/>
       <main className="w-full flex items-center justify-center h-full absolute mt-8">
-        <div className="w-full max-w-[1440px] grid grid-cols-[1fr_3fr_2fr] h-full gap-4 ">
+        <div className="w-full max-w-[1440px] grid grid-cols-[1fr_4fr_2fr] h-full gap-4 ">
 
           <Menu />
 
