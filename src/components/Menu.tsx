@@ -13,7 +13,6 @@ export function Menu() {
   return (
     <Card
       isImageBackground={ true }
-      className="bg-c_white"
       heightAuto={ true }
       positionImageBackground={'bottom-left'}
       isPixelsImages={false}

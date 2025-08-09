@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "miragem-ds": "^0.0.1",
+    "miragem-ds": "^0.0.10",
     "next": "15.4.2",
     "react": "19.1.0",
     "react-dom": "19.1.0",

@@ -4,7 +4,7 @@ export default function CurrentDate() {
   const [now, setNow] = useState(new Date());
 
   useEffect(() => {
-    const timer = setInterval(() => setNow(new Date()), 1000 * 60); // atualiza a cada minuto
+    const timer = setInterval(() => setNow(new Date()), 1000 * 60);
     return () => clearInterval(timer);
   }, []);
 

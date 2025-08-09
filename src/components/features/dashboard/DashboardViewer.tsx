@@ -2,17 +2,15 @@
 
 import Header from '@/components/features/header/Header';
 import Balance from '@/components/Balance';
-import { Card } from 'miragem-ds';
+import { Card, Select } from 'miragem-ds';
 import CurrentDate from '@/components/CurrentDate';
 import { Extract } from '@/components/Extract';
 import { Menu } from '@/components/Menu';
-
+import img from "../../../../public/images/img-woman-credit-card-md@2x.png"
 
 
 export function DashboardViewer() {
   
-
-
   return (
     <>
       <Header/>
@@ -21,33 +19,45 @@ export function DashboardViewer() {
 
           <Menu />
 
-          <div className="flex flex-col w-full h-full">
+          <div className="flex flex-col w-full h-full gap-4">
             <Card
               background='primary'
               isImageBackground={ false }
               heightAuto={ true }
               isPixelsImages={false}
+              positionImageBackground='bottom-left'
+              className='h-96'
+              // imageBackground={img.src}
             >
-              <div className="flex justify-between">
-                <div className="w-full lg:w-1/2">
+              <div className="flex w-full h-full">
+                <div className="w-full">
                   <p className="text-2xl text-white font-semibold">Olá, Joana!
                     :)</p>
                   <p className="text-sm text-white">
                     <CurrentDate/>
                   </p>
                 </div>
-                <div className="w-full lg:w-1/2">
+                <div className="w-64 flex items-center h-full pr-10">
                   <Balance/>
                 </div>
               </div>
             </Card>
-            <Card background={ 'secondary' }
-                  isImageBackground={false }
-                  heightAuto={ false }  isPixelsImages={true} sidePixelsImages='right'>
+
+            <Card 
+              background={ 'secondary' }
+              isImageBackground={false }
+              heightAuto={ false }  
+              isPixelsImages={true} 
+              sidePixelsImages='right'
+            >
               <div className="">
-                e ai
+                <h3>Nova transação</h3>
+                {/* <Select>
+                  
+                </Select> */}
               </div>
             </Card>
+
           </div>
 
           <Extract />

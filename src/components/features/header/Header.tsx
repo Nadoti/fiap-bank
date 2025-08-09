@@ -15,7 +15,7 @@ export default function Header() {
   ];
   return (
       <header className="bg-cyan-900">
-        <div className="flex items-center justify-between py-4 px-8">
+        <div className="flex max-w-[1440px] my-0 mx-auto justify-between py-4 px-8">
           <div className="flex items-center gap-4">
             <button
                 className="lg:hidden"

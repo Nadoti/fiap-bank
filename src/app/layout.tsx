@@ -1,7 +1,7 @@
+import "miragem-ds/css"
 import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
 import "./globals.css";
-import "miragem-ds/css"
 
 const geistRoboto = Roboto({
   variable: "--font-roboto",
@@ -22,6 +22,7 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={`${geistRoboto.variable} antialiased`}
+        suppressHydrationWarning={true}
       >
         {children}
       </body>
