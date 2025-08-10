@@ -19,7 +19,7 @@ export default function Balance() {
   };
 
   return (
-      <div className="text-white mx-auto w-full p-4 md:mb-18">
+      <div className="text-white mx-auto w-full p-4 lg:pt-[94px]">
         <div className="flex items-center justify-between mb-4">
           <h1 className="text-xl font-semibold">Saldo</h1>
           <button
@@ -37,7 +37,7 @@ export default function Balance() {
           <p className="font-normal text-gray-200">Conta Corrente</p>
         </div>
 
-        <div className="text-3xl font-light">
+        <div className="text-3xl font-normal">
           { isVisible ? formatBalance(balance) : '••••••' }
         </div>
       </div>
