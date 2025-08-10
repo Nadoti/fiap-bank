@@ -66,18 +66,7 @@ export function Extract() {
         </div>
 
         <div>
-          {transactions === null ? (
-              <div className="space-y-4">
-                {[1, 2, 3].map(i => (
-                    <div key={i} className="animate-pulse">
-                      <div className="h-3 bg-gray-200 rounded w-1/4 mb-2"></div>
-                      <div className="h-4 bg-gray-200 rounded w-1/2 mb-2"></div>
-                      <div className="h-4 bg-gray-200 rounded w-1/3 mb-2"></div>
-                      <div className="h-px bg-gray-200 mt-2"></div>
-                    </div>
-                ))}
-              </div>
-          ) : transactions.length === 0 ? (
+          {transactions === null || transactions.length === 0 ? (
               <div className="text-gray-500 text-center py-8">
                 Nenhuma transação encontrada
               </div>
