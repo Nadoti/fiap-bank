@@ -18,7 +18,7 @@ export default function Header() {
         <div className="flex max-w-[1440px] my-0 mx-auto justify-between py-4 px-8">
           <div className="flex items-center gap-4">
             <button
-                className="lg:hidden"
+                className="md:hidden"
                 onClick={() => setMenuOpen(!menuOpen)}
                 aria-label="Abrir menu"
             >
