@@ -1,3 +1,5 @@
+"use client"
+
 import { Card } from "miragem-ds";
 import { usePathname } from 'next/navigation';
 
