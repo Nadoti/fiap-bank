@@ -70,7 +70,7 @@ export function DashboardViewer() {
               sidePixelsImages={isTablet ? "right" : isMobile ? "left" : "left"}
               imageBackground={imgMoney.src}
               positionImageBackground='bottom-left'
-              className='sm:h-[700px]'
+              className='sm:h-[700px] md:h-[600px] lg:h-full lg:pb-[180px]'
             >
               <div className="flex flex-col md:flex-row items-center items- w-full h-full">
                 <div className="w-full text-center md:text-start md:self-baseline">
@@ -80,7 +80,7 @@ export function DashboardViewer() {
                     <CurrentDate/>
                   </p>
                 </div>
-                <div className="w-64 flex items-center h-full md:pr-10">
+                <div className="w-64 flex items-center md:pr-10">
                   <Balance/>
                 </div>
               </div>
