@@ -1,4 +1,7 @@
-import { SelectIOption } from "@/components/features/dashboard/DashboardViewer";
+interface SelectIOption {
+  value: string;
+  label: string
+}
 
 export const sampleOptions: SelectIOption[] = [
   { value: "currency-exchange", label: "Câmbio de Moeda" },

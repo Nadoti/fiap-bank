@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "idb": "^8.0.3",
     "miragem-ds": "^0.0.12",
     "next": "15.4.2",
     "react": "19.1.0",

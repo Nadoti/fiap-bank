@@ -1,18 +1,14 @@
 'use client'
 
-import { useState, useEffect } from 'react';
-import { TransactionType } from "@/enum/transaction.enum";
-import { useLocalStorage } from "@/hooks/useStorage";
 import { Card } from "miragem-ds";
 import { FiTrash2 } from 'react-icons/fi';
 import { IoPencil } from 'react-icons/io5';
-import { Transaction } from '@/types/transactions.interface';
 import { sampleOptions } from "@/utils/list-options";
+import { useContext } from "react";
+import { TransactionsContext } from "@/contexts/TransactionsContext";
 
 export function Extract() {
-  const { getStorage } = useLocalStorage();
-
-  const transactions = getStorage<Transaction[]>(TransactionType.TRANSACTION) || [];
+  const { transactions } = useContext(TransactionsContext)
 
   const formatValue = (value: number) => {
     return new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(value)
@@ -61,17 +57,17 @@ export function Extract() {
         </div>
 
         <div className={'max-h-[800px] overflow-auto'}>
-          {transactions === null || transactions.length === 0 ? (
+          {transactions === null || transactions?.length === 0 ? (
               <div className="text-gray-500 text-center py-8">
                 Nenhuma transação encontrada
               </div>
           ) : (
-            transactions.map((transaction) => (
+            transactions?.map((transaction) => (
                     <div key={transaction.id} className="mb-4">
                       <div className="flex items-center justify-between">
                         <div className="flex flex-col w-full gap-2">
                           <div className="text-green-500 text-[13px] font-semibold">
-                            {dayOfWeek(transaction.createdAt)}
+                            {dayOfWeek(transaction.date)}
                           </div>
                           <div className="text-black text-base font-medium">
                             {filterTypes(transaction.type)}
@@ -82,7 +78,7 @@ export function Extract() {
                           <div className="h-px bg-green-500 mt-2"></div>
                         </div>
                         <div className="text-gray-400 text-sm">
-                          {formatDateComplete(transaction.createdAt)}
+                          {formatDateComplete(transaction.date)}
                         </div>
                       </div>
                     </div>
