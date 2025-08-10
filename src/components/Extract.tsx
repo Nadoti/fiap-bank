@@ -19,8 +19,7 @@ export function Extract() {
   }, [getStorage]);
 
   const formatValue = (value: number) => {
-    const prefix = value < 0 ? '-R$ ' : 'R$ ';
-    return prefix + Math.abs(value);
+    return new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(value)
   };
 
   function formatDateComplete(date: string) {
@@ -44,10 +43,10 @@ export function Extract() {
 
   return (
       <Card
-          className="bg-white rounded-lg py-8 ps-6 pe-[18px]"
-          isPixelsImages={false}
-          isImageBackground={false}
-          heightAuto={false}
+        className="bg-white rounded-lg py-8 ps-6 pe-[18px]"
+        isPixelsImages={false}
+        isImageBackground={false}
+        heightAuto={false}
       >
         <div className="flex items-center justify-between mb-6">
           <h3 className="text-[25px] font-bold text-black">Extrato</h3>
@@ -71,27 +70,27 @@ export function Extract() {
                 Nenhuma transação encontrada
               </div>
           ) : (
-                  transactions.map((transaction) => (
-                      <div key={transaction.id} className="mb-4">
-                        <div className="flex items-center justify-between">
-                          <div className="flex flex-col w-full gap-2">
-                            <div className="text-green-500 text-[13px] font-semibold">
-                              {dayOfWeek(transaction.createdAt)}
-                            </div>
-                            <div className="text-black text-base font-medium">
-                              {filterTypes(transaction.type)}
-                            </div>
-                            <div className="text-black text-base font-semibold">
-                              {formatValue(transaction.value)}
-                            </div>
-                            <div className="h-px bg-green-500 mt-2"></div>
+                transactions.map((transaction) => (
+                    <div key={transaction.id} className="mb-4">
+                      <div className="flex items-center justify-between">
+                        <div className="flex flex-col w-full gap-2">
+                          <div className="text-green-500 text-[13px] font-semibold">
+                            {dayOfWeek(transaction.createdAt)}
                           </div>
-                          <div className="text-gray-400 text-sm">
-                            {formatDateComplete(transaction.createdAt)}
+                          <div className="text-black text-base font-medium">
+                            {filterTypes(transaction.type)}
                           </div>
+                          <div className="text-black text-base font-semibold">
+                            {formatValue(transaction.value)}
+                          </div>
+                          <div className="h-px bg-green-500 mt-2"></div>
+                        </div>
+                        <div className="text-gray-400 text-sm">
+                          {formatDateComplete(transaction.createdAt)}
                         </div>
                       </div>
-                  ))
+                    </div>
+                ))
               )}
         </div>
       </Card>

@@ -1,11 +1,23 @@
 'use client'
 
 import { IoEye, IoEyeOff } from 'react-icons/io5';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useLocalStorage } from '@/hooks/useStorage';
+import { TransactionType } from '@/enum/transaction.enum';
+import { Transaction } from '@/types/transactions.interface';
 
 export default function Balance() {
   const [isVisible, setIsVisible] = useState(true);
-  const [balance] = useState(2500.00);
+  const [balance, setBalance] = useState<number>(0);
+  const { getStorage } = useLocalStorage();
+
+  useEffect(() => {
+    const savedTransactions = getStorage<Transaction[]>(TransactionType.TRANSACTION) || [];
+    const balances = savedTransactions.reduce((accumulator, current) => {
+      return accumulator + current.value
+    }, 0)
+    setBalance(balances);
+  }, [getStorage]);
 
   const toggleVisibility = () => {
     setIsVisible(!isVisible);

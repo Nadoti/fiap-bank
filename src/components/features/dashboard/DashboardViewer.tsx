@@ -2,7 +2,7 @@
 
 import Header from '@/components/features/header/Header';
 import Balance from '@/components/Balance';
-import { Button, Card, CurrencyInput, Input, Select } from 'miragem-ds';
+import { Button, Card, CurrencyInput, Select } from 'miragem-ds';
 import CurrentDate from '@/components/CurrentDate';
 import { Extract } from '@/components/Extract';
 import { Menu } from '@/components/Menu';
@@ -26,6 +26,7 @@ export function DashboardViewer() {
   const [typeTransaction, setTypeTransaction] = React.useState('')
   const [valueTransaction, setValueTransaction] = React.useState(0)
   const { getStorage, setStorage} = useLocalStorage();
+  const { isMobile, isTablet } = useScreenSizeDebounced()
 
   function createTransaction() {
     if(typeTransaction && valueTransaction) {
@@ -51,7 +52,7 @@ export function DashboardViewer() {
       setValueTransaction(value);
     }
   };
-  const { isMobile, isTablet } = useScreenSizeDebounced()
+
   return (
     <>
       <Header/>
@@ -107,15 +108,12 @@ export function DashboardViewer() {
                   />
                 </div>
                 <div className='w-full max-w-72 mb-8'>
-                  {/* <Input label='Valor' variant='default' onChange={(value) => setValueTransaction(value)}/> */}
                   <CurrencyInput
                     label="Valor"
                     value={valueTransaction}
                     onChange={handleValorChange}
                     placeholder="0,00"
                   />
-      
-                  
                 </div>
                 <div className='w-full max-w-72 mb-8'>
                   <Button fullWidth type='button' onClick={createTransaction}>
