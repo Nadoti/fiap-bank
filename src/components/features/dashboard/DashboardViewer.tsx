@@ -6,11 +6,14 @@ import { Button, Card, CurrencyInput, Input, Select } from 'miragem-ds';
 import CurrentDate from '@/components/CurrentDate';
 import { Extract } from '@/components/Extract';
 import { Menu } from '@/components/Menu';
-import img from "../../../../public/images/img-woman-credit-card-md@2x.png"
+import imgWoman from "../../../../public/images/img-woman-credit-card-md@2x.png"
+import imgMoney from "../../../../public/images/img-man-coin-sm@2x.png"
 import React from 'react';
 import { useLocalStorage } from '@/hooks/useStorage';
 import { TransactionType } from '@/enum/transaction.enum';
 import { Transaction } from '@/types/transactions.interface';
+import { sampleOptions } from '@/utils/list-options';
+import { useScreenSizeDebounced } from '@/hooks/useWidth';
 
 
 
@@ -19,33 +22,21 @@ export interface SelectIOption {
   value: string;
 }
 
-export const sampleOptions: SelectIOption[] = [
-  { value: "currency-exchange", label: "Câmbio de Moeda" },
-  { value: "doc-ted", label: "DOC/TED" },
-  { value: "loan-financing", label: "Empréstimo e Financiamento" },
-];
-
-
-
 export function DashboardViewer() {
   const [typeTransaction, setTypeTransaction] = React.useState('')
   const [valueTransaction, setValueTransaction] = React.useState(0)
   const { getStorage, setStorage} = useLocalStorage();
 
   function createTransaction() {
-    console.log(valueTransaction)
     if(typeTransaction && valueTransaction) {
       const existingTransactions = getStorage<Transaction[]>(TransactionType.TRANSACTION) || [];
-      console.log('existingTransactions', existingTransactions)
       const newTransaction: Transaction = {
         id: crypto.randomUUID(),
         type: typeTransaction,
         value: valueTransaction,
         createdAt: new Date().toISOString()
       };
-      console.log('newTransaction', newTransaction)
       const updatedTransactions = [...existingTransactions, newTransaction];
-      console.log('updatedTransactions', updatedTransactions)
       setStorage(TransactionType.TRANSACTION, updatedTransactions);
       
       setTypeTransaction('');
@@ -60,7 +51,7 @@ export function DashboardViewer() {
       setValueTransaction(value);
     }
   };
-  
+  const { isMobile, isTablet } = useScreenSizeDebounced()
   return (
     <>
       <Header/>
@@ -72,12 +63,13 @@ export function DashboardViewer() {
           <div className="flex flex-col w-full h-full gap-4">
             <Card
               background='primary'
-              isImageBackground={ false }
+              isImageBackground={ isTablet || isMobile }
               heightAuto={ true }
-              isPixelsImages={false}
+              isPixelsImages={ isTablet || isMobile }
+              sidePixelsImages={isTablet ? "right" : isMobile ? "left" : "left"}
+              imageBackground={imgMoney.src}
               positionImageBackground='bottom-left'
-              className='h-96'
-              // imageBackground={img.src}
+              className='sm:h-[700px]'
             >
               <div className="flex flex-col md:flex-row items-center items- w-full h-full">
                 <div className="w-full text-center md:text-start md:self-baseline">
@@ -95,10 +87,12 @@ export function DashboardViewer() {
 
             <Card 
               background={ 'secondary' }
-              isImageBackground={false }
+              isImageBackground={ isTablet || isMobile }
               heightAuto={ false }  
-              isPixelsImages={true} 
-              sidePixelsImages='right'
+              isPixelsImages={ true }
+              sidePixelsImages={isTablet ? "left" : "right" }
+              imageBackground={imgWoman.src}
+              positionImageBackground='bottom-right'
             >
               <div className="p-2">
                 <h3 className='text-2xl font-bold text-gray-100 mb-8'>Nova transação</h3>

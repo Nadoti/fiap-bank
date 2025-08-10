@@ -1,10 +1,12 @@
+'use client'
+
 import { TransactionType } from "@/enum/transaction.enum";
 import { useLocalStorage } from "@/hooks/useStorage";
 import { Card } from "miragem-ds";
 import { FiTrash2 } from 'react-icons/fi';
 import { IoPencil } from 'react-icons/io5';
 import { Transaction } from '@/types/transactions.interface';
-import { sampleOptions } from "./features/dashboard/DashboardViewer";
+import { sampleOptions } from "@/utils/list-options";
 
 export function Extract() {
   const { getStorage } = useLocalStorage();
@@ -58,7 +60,7 @@ export function Extract() {
         </div>
       </div>
 
-      <div>
+      <div className="overflow-auto max-h-[500px]">
         {transactions?.map((transaction, index) => (
             <div key={transaction.id} className="mb-4">
               <div className="flex items-center justify-between">

@@ -1,3 +1,5 @@
+'use client'
+
 import { useEffect, useState } from 'react';
 
 export default function CurrentDate() {
@@ -17,8 +19,7 @@ export default function CurrentDate() {
     });
   }
 
-  const formatted = formatDate(now)
-      .replace(/^\w/, c => c.toUpperCase());
+  const formatted = formatDate(now).replace(/^\w/, c => c.toUpperCase());
 
   return <span>{formatted}</span>;
 }
