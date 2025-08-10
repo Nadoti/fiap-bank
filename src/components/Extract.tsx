@@ -11,12 +11,8 @@ import { sampleOptions } from "@/utils/list-options";
 
 export function Extract() {
   const { getStorage } = useLocalStorage();
-  const [transactions, setTransactions] = useState<Transaction[] | null>(null);
 
-  useEffect(() => {
-    const savedTransactions = getStorage<Transaction[]>(TransactionType.TRANSACTION) || [];
-    setTransactions(savedTransactions);
-  }, [getStorage]);
+  const transactions = getStorage<Transaction[]>(TransactionType.TRANSACTION) || [];
 
   const formatValue = (value: number) => {
     return new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(value)
@@ -70,7 +66,7 @@ export function Extract() {
                 Nenhuma transação encontrada
               </div>
           ) : (
-                transactions.map((transaction) => (
+            transactions.map((transaction) => (
                     <div key={transaction.id} className="mb-4">
                       <div className="flex items-center justify-between">
                         <div className="flex flex-col w-full gap-2">

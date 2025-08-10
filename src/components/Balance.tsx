@@ -8,16 +8,12 @@ import { Transaction } from '@/types/transactions.interface';
 
 export default function Balance() {
   const [isVisible, setIsVisible] = useState(true);
-  const [balance, setBalance] = useState<number>(0);
   const { getStorage } = useLocalStorage();
 
-  useEffect(() => {
-    const savedTransactions = getStorage<Transaction[]>(TransactionType.TRANSACTION) || [];
-    const balances = savedTransactions.reduce((accumulator, current) => {
-      return accumulator + current.value
-    }, 0)
-    setBalance(balances);
-  }, [getStorage]);
+  const savedTransactions = getStorage<Transaction[]>(TransactionType.TRANSACTION) || [];
+  const  balance = savedTransactions.reduce((accumulator, current) => {
+    return accumulator + current.value
+  }, 0)
 
   const toggleVisibility = () => {
     setIsVisible(!isVisible);

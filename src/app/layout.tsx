@@ -22,7 +22,6 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={`${geistRoboto.variable} antialiased`}
-        suppressHydrationWarning={true}
       >
         {children}
       </body>
