@@ -65,7 +65,7 @@ export function Extract() {
           </div>
         </div>
 
-        <div>
+        <div className={'max-h-[800px] overflow-auto'}>
           {transactions === null || transactions.length === 0 ? (
               <div className="text-gray-500 text-center py-8">
                 Nenhuma transação encontrada
