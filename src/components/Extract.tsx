@@ -1,44 +1,39 @@
+import { TransactionType } from "@/enum/transaction.enum";
+import { useLocalStorage } from "@/hooks/useStorage";
 import { Card } from "miragem-ds";
 import { FiTrash2 } from 'react-icons/fi';
 import { IoPencil } from 'react-icons/io5';
+import { Transaction } from '@/types/transactions.interface';
+import { sampleOptions } from "./features/dashboard/DashboardViewer";
 
 export function Extract() {
-  const transactions = [
-    {
-      id: 1,
-      month: 'Novembro',
-      type: 'Depósito',
-      value: 150,
-      data: '18/11/2022'
-    },
-    {
-      id: 2,
-      month: 'Novembro',
-      type: 'Depósito',
-      value: 100,
-      data: '21/11/2022'
-    },
-    {
-      id: 3,
-      month: 'Novembro',
-      type: 'Depósito',
-      value: 50,
-      data: '21/11/2022'
-    },
-    {
-      id: 4,
-      month: 'Novembro',
-      type: 'Transferência',
-      value: -500,
-      data: '21/11/2022'
-    }
-  ];
+  const { getStorage } = useLocalStorage();
+  const transactions: Transaction[] | null = getStorage(TransactionType.TRANSACTION)
 
   const formatValue = (value: number) => {
     const prefix = value < 0 ? '-R$ ' : 'R$ ';
     return prefix + Math.abs(value);
   };
 
+  function formatDateComplete(date: string) {
+    return new Intl.DateTimeFormat('pt-BR', {
+      day: '2-digit',
+      month: '2-digit',
+      year: 'numeric'
+    }).format(new Date(date))
+  }
+
+  function dayOfWeek(day: string) {
+
+    return new Intl.DateTimeFormat('pt-BR', {
+      weekday: 'long'
+    }).format(new Date(day));
+  }
+
+  function filterTypes(type: string) {
+    const options = sampleOptions.find((types) => types.value === type)
+    return options?.label
+  }
 
   return (
     <Card 
@@ -64,15 +59,15 @@ export function Extract() {
       </div>
 
       <div>
-        {transactions.map((transaction, index) => (
+        {transactions?.map((transaction, index) => (
             <div key={transaction.id} className="mb-4">
               <div className="flex items-center justify-between">
                 <div className="flex flex-col w-full gap-2">
                   <div className="text-green-500 text-[13px] font-semibold">
-                    {transaction.month}
+                    {dayOfWeek(transaction.createdAt)}
                   </div>
                   <div className="text-black text-base font-medium">
-                    {transaction.type}
+                  {filterTypes(transaction.type)}
                   </div>
                   <div className="text-black text-base font-semibold">
                     {formatValue(transaction.value)}
@@ -80,7 +75,7 @@ export function Extract() {
                   <div className="h-px bg-green-500 mt-2"></div>
                 </div>
                 <div className="text-gray-400 text-sm">
-                  {transaction.data}
+                  {formatDateComplete(transaction.createdAt)}
                 </div>
               </div>
             </div>

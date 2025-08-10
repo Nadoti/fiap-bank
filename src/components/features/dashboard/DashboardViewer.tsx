@@ -10,6 +10,7 @@ import img from "../../../../public/images/img-woman-credit-card-md@2x.png"
 import React from 'react';
 import { useLocalStorage } from '@/hooks/useStorage';
 import { TransactionType } from '@/enum/transaction.enum';
+import { Transaction } from '@/types/transactions.interface';
 
 
 
@@ -18,19 +19,13 @@ export interface SelectIOption {
   value: string;
 }
 
-const sampleOptions: SelectIOption[] = [
+export const sampleOptions: SelectIOption[] = [
   { value: "currency-exchange", label: "Câmbio de Moeda" },
   { value: "doc-ted", label: "DOC/TED" },
   { value: "loan-financing", label: "Empréstimo e Financiamento" },
-  { value: "investments", label: "Investimentos" },
 ];
 
-interface Transaction {
-  id: string
-  type: string;
-  value: number;
-  createdAt: string;
-}
+
 
 export function DashboardViewer() {
   const [typeTransaction, setTypeTransaction] = React.useState('')
@@ -65,7 +60,6 @@ export function DashboardViewer() {
       setValueTransaction(value);
     }
   };
-
   
   return (
     <>
