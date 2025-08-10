@@ -18,7 +18,7 @@ git clone https://github.com/Nadoti/fiap-bank.git
 
 2. Entre na pasta do projeto:
 ```bash
-cd seu-projeto
+cd fiap-bank ou nome-da-pasta-projeto
 ```
 
 3. Instale as dependências:
