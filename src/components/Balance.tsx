@@ -18,7 +18,7 @@ export default function Balance() {
   const toggleVisibility = () => {
     setIsVisible(!isVisible);
   };
-  console.log('transactions', transactions)
+  
   const formatBalance = (value: number) => {
     return new Intl.NumberFormat('pt-BR', {
       style: 'currency',

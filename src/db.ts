@@ -21,7 +21,6 @@ export interface FinanceDBSchema extends DBSchema {
 async function getDb() {
   const db = await openDB<FinanceDBSchema>(DB_NAME, DB_VERSION, {
     upgrade(db) {
-      console.log('Criando/Atualizando o banco de dados...');
       
       const store = db.createObjectStore(STORE_NAME, {
         keyPath: 'id',
